@@ -97,7 +97,7 @@ export function Libros() {
                     }
                 </div>
             </nav>
-            <div className="w-[90%] container grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 ml-[20vh]">
+            <div className="w-[90%] container grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 ml-[20vh]">
                 {
                     Libros.map((libro, Index) => {
                         return (

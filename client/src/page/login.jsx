@@ -7,6 +7,7 @@ import { Registro } from "./registro";
 import { InicioSesion } from "./inicioSesion";
 
 import { Link } from "react-router-dom";
+import { ButtonNav } from "../components/buttons/bNav";
 
 export function useChangeLogin() {
     const [form, setForm] = useState("Iniciar");
@@ -28,23 +29,25 @@ export function Login() {
     const { Inicio, Registros, formRender } = useChangeLogin()
     
     return (
-        <div>
+        <div className="flex flex-col items-center m-[3vh] h-[50vh] p-[2vh]">
             <div>
-                <Link to="/">
-                    <button>Regresar</button>
-                </Link>
+                <ButtonNav href="/" text="Regresar"/>
             </div>
-            <nav>
-                <button onClick={Inicio}>
+            <nav className="flex my-[3vh] w-[90%] justify-center">
+                <button 
+                    onClick={Inicio}
+                    className="m-[2vh] bg-emerald-300 p-[1vh] rounded-[1vh] text-white hover:bg-transparent hover:text-emerald-300 border-solid border-2 hover:border-emerald-300"
+                >
                     Iniciar Sesion
                 </button>
-                <button onClick={Registros}>
+                <button 
+                    onClick={Registros}
+                    className="m-[2vh] bg-emerald-300 p-[1vh] rounded-[1vh] text-white hover:bg-transparent hover:text-emerald-300 border-solid border-2 hover:border-emerald-300"
+                >
                     Registrar
                 </button>
             </nav>
-            <div>
-                {formRender}
-            </div>
+            {formRender}
         </div>
     )
 }
