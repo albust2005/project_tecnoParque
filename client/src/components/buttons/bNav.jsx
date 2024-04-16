@@ -5,7 +5,7 @@ export function ButtonNav({ href, text }){
     return(
         <Link 
         to={href}
-        className="border-solid border-2"
+        className="border-none p-[1vh] bg-gray-100 rounded-[1vh]"   
         >
         {text}
         </Link>

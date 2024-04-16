@@ -1,10 +1,10 @@
 // Importación de los modelos realizadod
-import Usuarios from "./usuarios";
-import Tema from "./tema";
-import Libros from "./libros";
-import Empresa from "./empresa";
-import DescripLibros from "./descrip_libros";
-import Compra from "./compra";
+import Usuarios from "../models/usuarios.js";
+import Tema from "../models/tema.js";
+import Libros from "../models/libros.js";
+import Empresa from "../models/empresa.js";
+import DescripLibros from "../models/descrip_libros.js";
+import Compra from "../models/compra.js";
 
 // Relación de tema 
 Tema.hasMany(Libros, { foreignKey: 'COD_tema', as: 'libros'});

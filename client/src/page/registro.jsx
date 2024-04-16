@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useNewUserContext } from '../components/providers/userProvider';
 
 export function Registro() {
 
@@ -9,10 +10,13 @@ export function Registro() {
         watch,
     } = useForm();
 
+    const createUser = useNewUserContext();
 
     return(
         <div>
-            <form>
+            <form
+                onSubmit={handleSubmit(createUser)}
+            >
                 <div>
                     <div>
                         <label htmlFor="ID">

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useChangeLogin } from '../../page/login';
 
-export const useCreateUser = ({ URI }) => {
+export const useCreateUser = (URI) => {
     const { Inicios } = useChangeLogin()
 
     //funcion para registrar un nuevo usuario
