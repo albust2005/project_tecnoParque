@@ -1,75 +1,14 @@
-import { useState } from "react";
-import { useTemaContext } from "../../components/providers/temaProvider";
-import { Link } from "react-router-dom";
 
 import { ButtonNav } from "../../components/buttons/bNav";
+import { useLibrosUser } from "../../components/hooks/useLibrosUser";
+import { useTema } from "../../components/hooks/useTema";
+
 
 export function LibrosU() {
 
-    const [select, setSelect] = useState(null);
+    const { temas } = useTema();
 
-    const temas = useTemaContext();
-
-    const Libros = [
-        {
-            titulo: "El amor y otros demonios",
-            descripcion: "Libro triste",
-            image: "../../src/assets/img/libros.jpg",
-            categoria: 1
-        },
-        {
-            titulo: "El amor y otros demonios",
-            descripcion: "Libro triste",
-            image: "../../src/assets/img/libros.jpg",
-            categoria: 2
-        },
-        {
-            titulo: "El amor y otros demonios",
-            descripcion: "Libro triste",
-            image: "../../src/assets/img/libros.jpg",
-            categoria: 3
-        },
-        {
-            titulo: "El amor y otros demonios",
-            descripcion: "Libro triste",
-            image: "../../src/assets/img/libros.jpg",
-            categoria: 4
-        },
-        {
-            titulo: "El amor y otros demonios",
-            descripcion: "Libro triste",
-            image: "../../src/assets/img/libros.jpg",
-            categoria: 5
-        },
-        {
-            titulo: "El amor y otros demonios",
-            descripcion: "Libro triste",
-            image: "../../src/assets/img/libros.jpg",
-            categoria: 3
-        },
-        {
-            titulo: "El amor y otros demonios",
-            descripcion: "Libro triste",
-            image: "../../src/assets/img/libros.jpg",
-            categoria: 5
-        },
-        {
-            titulo: "El amor y otros demonios",
-            descripcion: "Libro triste",
-            image: "../../src/assets/img/libros.jpg",
-            categoria: 4
-        }
-    ]
-
-    const mandar = () => {
-        return (
-          <ModalSol
-            // estado={estadoModal1}
-            // cambiarEstado={cambiarEstadoModal1}
-            // NIT={nit}
-          />
-        );
-      };
+    const { libros } = useLibrosUser(); 
 
     return ( 
         <section className="flex flex-col w-[100%]">
@@ -91,16 +30,14 @@ export function LibrosU() {
             </nav>
             <div className="w-[90%] container grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 ml-[20vh]">
                 {
-                    Libros.map((libro, Index) => {
+                    libros.map((libro, Index) => {
                         return (
                             <div key={Index} className="bg-gray-200 p-[2vh] w-[30vh] m-[2vh]">
-                                <Link>
-                                    <img src={libro.image} alt="" className="w-[20vh]"/>
-                                    <div>
+                                <img src="../../../src/assets/img/libros.jpg" alt="" className="w-[20vh] h-[25vh] object-cover"/>
+                                <div>
                                     <h3>{libro.titulo}</h3>
-                                    <button >Ver Mas</button>
-                                    </div>
-                                </Link>
+                                    <ButtonNav text="Ver mas" href={`/usuarios/libros/descLibros/${libro.COD}`}/>
+                                </div>
                             </div>
                         )
                     })

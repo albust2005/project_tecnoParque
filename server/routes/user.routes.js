@@ -5,7 +5,7 @@ import {
     eliminarPerfil,
     tema,
     libros,
-    getAllEmpresas
+    usuarios
 } from '../controllers/user.Controller.js';
 
 // Creamos la variable de la ruta
@@ -22,7 +22,7 @@ router.get("/temas", tema);
 // Ruta para obtener todos los libros
 router.get("/libros", libros);
 // Ruta para obtener empresas
-router.get("/empresas", getAllEmpresas);
+router.get("/usuarios", usuarios);
 
 export default router;
 

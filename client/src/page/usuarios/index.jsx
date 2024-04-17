@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { PerfilU } from "./perfil";
 import { LibrosU } from "./librosU";
 import { MisLibros } from "./misLibros";
+import { DescLibros } from "../../components/templates/descLibro";
+import { Carrito } from "./carrito";
 
 export function IndexU() { 
     return(
@@ -12,6 +14,8 @@ export function IndexU() {
                 <Route path="/perfil" element={<PerfilU/>}></Route>
                 <Route path="/libros" element={<LibrosU/>}></Route>
                 <Route path="/misLibros" element={<MisLibros/>}></Route>
+                <Route path="/libros/descLibros/:COD" element={<DescLibros/>}></Route>
+                {/* <Route path="/carrito" element={<Carrito/>}></Route> */}
             </Routes>
         </>
     )

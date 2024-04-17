@@ -11,21 +11,26 @@ import { UserProvider, useUserContext } from "./components/providers/userProvide
 import { TemaProvider } from "./components/providers/temaProvider";
 import { IndexE } from "./page/empresa/indexE";
 import { LibroProvider } from "./components/providers/librosProvider";
+
 import { ProtectedRoute } from "./components/providers/protedtecRoute";
 import { NotFount } from "./components/templates/NotFount";
+
+import { UsuarioProvider } from "./components/providers/usuariosProvider";
+
 
 function App() {
   return (
     <>
-      <UserProvider>
-        <LibroProvider>
-          <TemaProvider>
-            <Header></Header>
-            <RouterPage></RouterPage>
-          </TemaProvider>
-        </LibroProvider>
-      </UserProvider>
-
+      <UsuarioProvider>
+        <UserProvider>
+          <LibroProvider>
+            <TemaProvider>
+              <Header></Header>
+              <RouterPage></RouterPage>
+            </TemaProvider>
+          </LibroProvider>
+        </UserProvider>
+      </UsuarioProvider>
 
     </>
   );

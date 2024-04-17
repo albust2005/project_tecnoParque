@@ -63,7 +63,7 @@ export const libros = async (req, res) => {
     } else {
       // Manejar otros tipos de errores
       res.status(400).json({
-        message: "Hubo error al traer la información de la categoria",
+        message: "Hubo error al traer la información de los libros",
         error,
       });
     }
@@ -71,4 +71,22 @@ export const libros = async (req, res) => {
 };
 
 // Obtener todas las empresas
-export const getAllEmpresas = async (req, res) => {};
+export const usuarios = async (req, res) => {
+  try {
+    const usuarios = await Usuarios.findAll();
+    res.status(200).json(usuarios);
+  } catch (error) {
+    if (error instanceof Sequelize.DatabaseError) {
+      // Manejar el error de base de datos
+      res
+        .status(400)
+        .json({ message: `Error de base datos`, error: error.message });
+    } else {
+      // Manejar otros tipos de errores
+      res.status(400).json({
+        message: "Hubo error al traer la información de los usuarios",
+        error,
+      });
+    }
+  }
+};
