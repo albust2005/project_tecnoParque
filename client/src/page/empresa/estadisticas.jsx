@@ -1,8 +1,21 @@
+import { useState } from "react"
+import { useLibrosContext } from "../../components/providers/librosProvider"
 
 export function Estadisticas() {
+
+    const { libros } = useLibrosContext()
+
     return (
         <section>
-            <h1>Estadisticas de los libros</h1>
+            <div>
+                {
+                    libros?.map(libro => (
+                        <div>
+                            
+                        </div>
+                    ))
+                }
+            </div>
         </section>
     )
 }
