@@ -22,7 +22,9 @@ export function Header() {
 
   return (
     <nav className="flex justify-between p-[2vh] border-solid border-2 items-center">
-      <h1 className="font-serif text-xl">Empresa ABC</h1>
+      <Link to="/">
+        <h1 className="font-serif text-xl">Empresa ABC</h1>
+      </Link>
       {!sesionUser && (
         <>
           <ButtonNav href="/libros" text="Libros"></ButtonNav>
