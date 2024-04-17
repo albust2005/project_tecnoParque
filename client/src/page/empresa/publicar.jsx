@@ -13,20 +13,20 @@ export function Publicar() {
     const { publicarLibro } = useLibrosControllerContext()
 
     return (
-        <section className='mt-20 w-full h-full flex flex-col items-center justify-center'>
+        <section className='mt-12 mb-12 w-full h-full flex flex-col items-center justify-center text-white font-serif'>
             <form
-                className='bg-gray-200 p-[3vh] rounded-[2.5vh] w-1/2'
+                className='bg-[#576A5B] p-[3vh] rounded-sm w-1/2'
                 onSubmit={handleSubmit(publicarLibro)}
             >
                 <div className="flex flex-col items-center">
-                    <h1 className="font-serif text-2xl mb-[2vh]">Publicar Libro</h1>
+                    <h1 className=" text-4xl mb-[2vh] font-semibold">Publicar Libro</h1>
                     <div className="flex flex-col w-[80%] mb-[2vh]">
                         <label className="font-serif text-xl">
                             Titulo
                         </label>
                         <input
                             type="text"
-                            className="rounded-[1vh] p-[1vh]"
+                            className="rounded-[1vh] p-[1vh] bg-transparent border-b-2 border-white focus:outline-none"
                             {...register("titulo", {
                                 required: {
                                     value: true,
@@ -43,7 +43,7 @@ export function Publicar() {
                         </label>
                         <input
                             type="text"
-                            className="rounded-[1vh] p-[1vh]"
+                            className="rounded-[1vh] p-[1vh] bg-transparent border-b-2 border-white focus:outline-none"
                             {...register("ISBN", {
                                 required: {
                                     value: true,
@@ -65,7 +65,7 @@ export function Publicar() {
                                 maxHeight: '300px', 
                                 formSizing: 'content' 
                             }}
-                            className="rounded-[1vh] p-[1vh]"
+                            className="rounded-[1vh] p-[1vh] bg-transparent border-b-2 border-white focus:outline-none"
                             {...register("descripcion", {
                                 required: {
                                     value: true,
@@ -83,7 +83,7 @@ export function Publicar() {
                         </label>
                         <input
                             type="text"
-                            className="rounded-[1vh] p-[1vh]"
+                            className="rounded-[1vh] p-[1vh] bg-transparent border-b-2 border-white focus:outline-none"
                             {...register("costo", {
                                 required: {
                                     value: true,
@@ -99,7 +99,7 @@ export function Publicar() {
                         <select
                             name="cod_tema"
                             {...register("cod_tema")}
-                            className="rounded-[1vh] p-[1vh]"
+                            className="rounded-[1vh] p-[1vh] bg-transparent border-b-2 border-white focus:outline-none"
                         >
                             <option value="tema" disabled className="text-black">Tema</option>
                             {
@@ -110,7 +110,8 @@ export function Publicar() {
                         </select>
                     </div>
 
-                    <button className="m-[1vh] p-[2vh] bg-emerald-300 rounded-[2vh] text-white border-solid border-2 hover:bg-transparent hover:text-emerald-300 hover:border-emerald-300">
+                    <button className="m-[1vh] p-1 bg-[#F5F5DC] w-[80%] rounded-sm text-[#576A5B] border-solid border-2 
+          border-transparent hover:bg-transparent hover:text-white hover:border-white text-xl">
                         Publicar
                     </button>
                 </div>
