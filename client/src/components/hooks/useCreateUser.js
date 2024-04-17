@@ -1,6 +1,8 @@
 import axios from 'axios';
+import { useToastify } from './useToastify'
 
 export const useCreateUser = (URI) => {
+    const { showToastMessage } = useToastify()
     //funcion para registrar un nuevo usuario
     const createUser = async (data) => {
         try {
@@ -13,13 +15,13 @@ export const useCreateUser = (URI) => {
                 username: username,
                 contrasena: contrasena
             })
-            alert("Inicia Sesion")
+            showToastMessage("Inicia Sesión")
             console.log(data)
             window.location.reload();
         }catch (error){
             console.log(error.message)
             console.log(error)
-            alert('Revisa tus datos')
+            showToastMessage("Revisa tus datos")
         }
     };
 

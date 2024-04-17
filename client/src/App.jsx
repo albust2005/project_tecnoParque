@@ -19,21 +19,23 @@ import { UsuarioProvider } from "./components/providers/usuariosProvider";
 import { EmpresaProvider } from "./components/providers/empresaProvider";
 
 
+import { ToastContainer } from 'react-toastify';
+
+
 function App() {
   return (
     <>
-      <EmpresaProvider>
-        <UsuarioProvider>
-          <UserProvider>
-            <LibroProvider>
-              <TemaProvider>
-                <Header></Header>
-                <RouterPage></RouterPage>
-              </TemaProvider>
-            </LibroProvider>
-          </UserProvider>
-        </UsuarioProvider>
-      </EmpresaProvider>
+      <UsuarioProvider>
+        <UserProvider>
+          <LibroProvider>
+            <TemaProvider>
+              <Header></Header>
+              <RouterPage></RouterPage>
+            </TemaProvider>
+          </LibroProvider>
+          <ToastContainer position="top-center" />
+        </UserProvider>
+      </UsuarioProvider>
     </>
   );
 }

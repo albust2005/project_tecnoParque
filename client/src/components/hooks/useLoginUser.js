@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useToastify } from './useToastify'
 
 export const useLoginUser = (URI) => {
+    const { showToastMessage } = useToastify()
+
     const [ sesionUser, setSesionUser ] = useState(() => {
         const user = localStorage.getItem('user')
         return user ? JSON.parse(user) : null
@@ -26,7 +29,7 @@ export const useLoginUser = (URI) => {
                 })
 
                 console.log(respuesta)
-                alert(`Bienvenido ${username}`)
+                showToastMessage(`Bienvenido ${username}`)
                 setSesionUser(data)
                 navigate('/usuarios')
             }else{
@@ -37,18 +40,18 @@ export const useLoginUser = (URI) => {
                     })
 
                     console.log(respuesta)
-                    alert(`Bienvenido ${username}`)
+                    showToastMessage(`Bienvenido ${username}`)
                     setSesionUser(data)
                     navigate('/empresa')
                 }
             }
         }catch (error) {
             if (error.response) {
-                alert('Revisa tu usuario o contraseña')
+                showToastMessage('Revisa tu usuario o contraseña')
             }else if (error.request){
                 console.log('No se recibió respuesta del servidor');
             } else {
-                alert(error.message)
+                showToastMessage(error.message)
             }
         }
     }
@@ -56,7 +59,7 @@ export const useLoginUser = (URI) => {
     const logout = () => {
         localStorage.removeItem('user')
 
-        alert("Sesion cerrada correctamente")
+        showToastMessage("Sesion cerrada correctamente")
         setSesionUser(null)
         navigate('/')
     } 
