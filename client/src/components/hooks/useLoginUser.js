@@ -2,14 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-export const useLoginUser = () => {
+export const useLoginUser = (URI) => {
     const [ sesionUser, setSesionUser ] = useState(() => {
         const user = localStorage.getItem('user')
         return user ? JSON.parse(user) : null
     })  
 
     useEffect(() => {
-        localStorage.setItem('user', JSON.stringify(sessionUser))
+        localStorage.setItem('user', JSON.stringify(sesionUser))
     }, [sesionUser])
 
     const navigate = useNavigate()
@@ -29,7 +29,7 @@ export const useLoginUser = () => {
 
                 alert(`Bienvenido ${username}`)
                 setSesionUser(data)
-                navigate(!!location.state ? location.state.location.pathname : '/')
+                navigate('/usuarios')
             }else{
                 console.log("Sesion de empresa")
             }

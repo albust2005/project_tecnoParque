@@ -1,23 +1,43 @@
-import './App.css'
-import { Route, Router, Routes } from 'react-router-dom'
+import "./App.css";
+import { Route, Router, Routes } from "react-router-dom";
 
-import { Index } from './page'
-import { Header } from './components/templates/header'
-import { Login } from './page/login'
-import { Libros } from './page/Libros'
+import { Index } from "./page";
+import { Header } from "./components/templates/header";
+import { Login } from "./page/login";
+import { Libros } from "./page/Libros";
+import { IndexU } from "./page/usuarios/index";
+
+import { UserProvider, useUserContext } from "./components/providers/userProvider";
+import { TemaProvider } from "./components/providers/temaProvider";
+import { IndexE } from "./page/empresa/indexE";
 
 function App() {
-
   return (
     <>
-      <Header></Header>
-      <Routes>
-        <Route path='/' element={<Index/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
-        <Route path='/libros' element={<Libros/>}></Route>
-      </Routes>
+      {/* <TemaProvider> */}
+        <UserProvider>
+          <Header></Header>
+          <RouterPage></RouterPage>
+        </UserProvider>
+      {/* </TemaProvider> */}
     </>
+  );
+}
+
+function RouterPage() {
+  const { sesionUser } = useUserContext()
+
+  return (
+    <Routes>
+      <Route path="/" element={<Index />}></Route>
+      <Route path="/login" element={<Login />}></Route>
+      <Route path="/libros" element={<Libros />}></Route>
+
+      <Route path="/usuarios/*" element={<IndexU/>}></Route>
+
+      <Route path="/empresa/*" element={<IndexE/>}></Route>
+    </Routes>
   )
 }
 
-export default App
+export default App;

@@ -28,7 +28,7 @@ export function UserProvider({ children }) {
 
     return (
         <userContext.Provider value={{ sesionUser }}>
-            <newUserContext.Provider value = { createUser }>
+            <newUserContext.Provider value = {{createUser}}>
                 <loginUserContext.Provider value={{ loginUser, logout }}>
                     {children}
                 </loginUserContext.Provider>

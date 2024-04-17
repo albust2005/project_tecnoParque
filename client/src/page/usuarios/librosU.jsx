@@ -1,35 +1,14 @@
 import { useState } from "react";
-import { ButtonNav } from "../components/buttons/bNav";
-import { useTemaContext } from "../components/providers/temaProvider";
+import { useTemaContext } from "../../components/providers/temaProvider";
+import { Link } from "react-router-dom";
 
-export function Libros() { 
+import { ButtonNav } from "../../components/buttons/bNav";
+
+export function LibrosU() {
 
     const [select, setSelect] = useState(null);
 
     const temas = useTemaContext();
-    
-    // const categorias = [
-    //     {
-    //         COD: 1,
-    //         tema: "terror"     
-    //     },
-    //     {
-    //         COD: 2,
-    //         tema: "Comedia"     
-    //     },
-    //     {
-    //         COD: 3,
-    //         tema: "Ciencia Ficción"     
-    //     },
-    //     {
-    //         COD: 4,
-    //         tema: "Romance"     
-    //     },
-    //     {
-    //         COD: 5,
-    //         tema: "Criminalistica"     
-    //     }
-    // ]
 
     const Libros = [
         {
@@ -82,11 +61,21 @@ export function Libros() {
         }
     ]
 
+    const mandar = () => {
+        return (
+          <ModalSol
+            // estado={estadoModal1}
+            // cambiarEstado={cambiarEstadoModal1}
+            // NIT={nit}
+          />
+        );
+      };
+
     return ( 
         <section className="flex flex-col w-[100%]">
             <nav className="flex flex-col p-[2vh] bg-green-400 w-full">
                 <div className="mb-[2vh]">
-                    <ButtonNav href="/" text="Regresar"/>
+                    <ButtonNav href="/usuarios" text="Regresar"/>
                 </div>
                 <div className="flex justify-around">
                     {
@@ -105,11 +94,13 @@ export function Libros() {
                     Libros.map((libro, Index) => {
                         return (
                             <div key={Index} className="bg-gray-200 p-[2vh] w-[30vh] m-[2vh]">
-                                <img src={libro.image} alt="" className="w-[20vh]"/>
-                                <div>
-                                <h3>{libro.titulo}</h3>
-                                <p>{libro.descripcion}</p>
-                                </div>
+                                <Link>
+                                    <img src={libro.image} alt="" className="w-[20vh]"/>
+                                    <div>
+                                    <h3>{libro.titulo}</h3>
+                                    <button >Ver Mas</button>
+                                    </div>
+                                </Link>
                             </div>
                         )
                     })

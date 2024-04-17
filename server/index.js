@@ -7,6 +7,7 @@ import session from 'express-session';
 import  db  from './database/db.js';
 
 // Importamos las rutas
+import auth from './routes/auth.routes.js';
 import user from './routes/user.routes.js';
 
 // Iniciando el servidor
@@ -23,6 +24,7 @@ app.use(session({
 }));
 
 // Rutas de la navegación
+app.use("/", auth);
 app.use("/user", user);
 
 // Comprobando la conexión con la base de datos

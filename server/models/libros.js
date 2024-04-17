@@ -1,6 +1,6 @@
 // Imsportamos las dependencias para el proyecto
 import { DataTypes } from "sequelize";
-import { db } from "../database/db";
+import db from "../database/db.js";
 
 const Libros = db.define('libros', {
     COD: {
@@ -26,13 +26,6 @@ const Libros = db.define('libros', {
     image: {
         type: DataTypes.STRING(200)
     },
-    createAt: {
-        type: DataTypes.DATE,
-        allowNull: false
-    },
-    updateAt: {
-        type: DataTypes.DATE,
-    },
     COD_tema: {
         type: DataTypes.INTEGER(10),
         allowNull: false
@@ -41,6 +34,8 @@ const Libros = db.define('libros', {
         type: DataTypes.INTEGER(11),
         allowNull: false
     }
+}, {
+    timestamps: false
 })
 
 export default Libros;

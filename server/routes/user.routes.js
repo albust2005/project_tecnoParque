@@ -3,7 +3,7 @@ import {
     getlogout,
     editarPerfil,
     eliminarPerfil,
-    temas,
+    tema,
     libros,
     getAllEmpresas
 } from '../controllers/user.Controller.js';
@@ -18,7 +18,7 @@ router.put("/editarPerfil", editarPerfil);
 //Ruta para eliminar el perfil del usuario
 router.delete("/eliminarPerfil", eliminarPerfil);
 // Ruta para obtener las categorias
-router.get("/temas", temas);
+router.get("/temas", tema);
 // Ruta para obtener todos los libros
 router.get("/libros", libros);
 // Ruta para obtener empresas

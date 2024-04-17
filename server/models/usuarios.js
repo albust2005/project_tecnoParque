@@ -1,9 +1,9 @@
 // Importamos dependecias al proyecto
 import { DataTypes } from "sequelize";
-import { db } from "../database/db";
+import db from "../database/db.js";
 
 const Usuarios = db.define('usuarios', {
-    COD: {
+    ID: {
         type: DataTypes.INTEGER(11),
         primaryKey: true
     },
@@ -16,13 +16,6 @@ const Usuarios = db.define('usuarios', {
     },
     image: {
         type: DataTypes.STRING(200)
-    },
-    createAt: {
-        type: DataTypes.DATE,
-        allowNull: false
-    },
-    updateAt: {
-        type: DataTypes.DATE,
     },
     username: {
         type: DataTypes.STRING(100),
@@ -37,6 +30,8 @@ const Usuarios = db.define('usuarios', {
         type: DataTypes.STRING(100),
         allowNull: false
     }
+}, {
+    timestamps: false
 })
 
 export default Usuarios;

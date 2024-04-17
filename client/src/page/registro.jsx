@@ -8,9 +8,9 @@ export function Registro() {
         handleSubmit,
         formState: { errors },
         watch,
-    } = useForm();
+    } = useForm();  
 
-    const createUser = useNewUserContext();
+    const {createUser} = useNewUserContext();
 
     return(
         <div>

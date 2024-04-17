@@ -1,6 +1,6 @@
 // Importación de las dependencias
 import { DataTypes } from "sequelize";
-import { db } from "../database/db";
+import db from "../database/db.js";
 
 const DescripLibros = db.define('descrip_libros', {
     COD_compra: {

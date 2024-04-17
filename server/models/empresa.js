@@ -1,6 +1,6 @@
 // Importamos las dependencias 
 import { DataTypes } from "sequelize";
-import { db } from "../database/db";
+import db from "../database/db.js";
 
 const Empresa = db.define('empresa', {
     COD : {
@@ -32,14 +32,9 @@ const Empresa = db.define('empresa', {
         type: DataTypes.STRING(200),
         allowNull: false,
         unique: true
-    },
-    createAt: {
-        type: DataTypes.DATE,
-        allowNull: false
-    },
-    updateAt: {
-        type: DataTypes.DATE,
     }
+},{
+    timestamps: false
 })
 
 export default Empresa;

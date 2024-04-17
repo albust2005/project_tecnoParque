@@ -5,6 +5,7 @@ import { useChangeLogin } from '../../page/login';
 
 export const useCreateUser = (URI) => {
     const { Inicios } = useChangeLogin()
+    console.log(URI)
 
     //funcion para registrar un nuevo usuario
     const createUser = async (data) => {
@@ -20,9 +21,10 @@ export const useCreateUser = (URI) => {
             })
             alert("Inicia Sesion")
             console.log(data)
-            Inicios()
+            window.location.reload();
         }catch (error){
             console.log(error.message)
+            console.log(error)
             alert('Revisa tus datos')
         }
     };
