@@ -1,5 +1,5 @@
 import express from "express";
-import { publicarLibro, eliminarLibro, editarLibro } from "../controllers/empresa.Controller.js";
+import { publicarLibro, eliminarLibro, editarLibro, empresas } from "../controllers/empresa.Controller.js";
 
 const router = express.Router()
 
@@ -9,4 +9,7 @@ router.post("/publicar", publicarLibro)
 router.delete("/eliminar/:COD", eliminarLibro)
 //editar libro
 router.put("/editar", editarLibro)
+// obtener empresas
+router.get("/empresas", empresas)
+
 export default router

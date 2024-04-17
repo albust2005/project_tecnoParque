@@ -1,7 +1,10 @@
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
+import { useToastify } from './useToastify'
 
 export const usePublicarLibro = () => {
+    const { showToastMessage } = useToastify()
+
     const navigate = useNavigate()
 
     const publicarLibro = async (data) => {
@@ -21,11 +24,10 @@ export const usePublicarLibro = () => {
             console.log(response)
             alert("Libro creado correctamente")
             navigate("/empresa/libros")
-
         } catch (error) {
             console.log(error.message)
             console.log(error)
-            alert('Revisa tus datos')
+            showToastMessage("Revisa tus datos")
         }
     }
 
