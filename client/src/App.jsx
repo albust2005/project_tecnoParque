@@ -11,6 +11,8 @@ import { UserProvider, useUserContext } from "./components/providers/userProvide
 import { TemaProvider } from "./components/providers/temaProvider";
 import { IndexE } from "./page/empresa/indexE";
 import { LibroProvider } from "./components/providers/librosProvider";
+import { ProtectedRoute } from "./components/providers/protedtecRoute";
+import { NotFount } from "./components/templates/NotFount";
 
 function App() {
   return (
@@ -38,9 +40,24 @@ function RouterPage() {
       <Route path="/login" element={<Login />}></Route>
       <Route path="/libros" element={<Libros />}></Route>
 
-      <Route path="/usuarios/*" element={<IndexU />}></Route>
+      <Route element={
+        <ProtectedRoute
+          isAuth={!!sesionUser && sesionUser.Rol === "Cliente"}
+        />
+      }>
+        <Route path="/usuarios/*" element={<IndexU />}></Route>
+      </Route>
 
-      <Route path="/empresa/*" element={<IndexE />}></Route>
+
+      <Route element={
+        <ProtectedRoute
+          isAuth={!!sesionUser && sesionUser.Rol === "Empresa"}
+        />
+      }>
+        <Route path="/empresa/*" element={<IndexE />}></Route>
+      </Route>
+
+      <Route path="*" element={<NotFount></NotFount>}></Route>
     </Routes>
   )
 }
