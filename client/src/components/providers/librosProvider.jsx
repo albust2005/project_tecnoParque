@@ -2,6 +2,8 @@ import { createContext, useContext } from "react";
 import { useLibrosUser } from "../hooks/useLibrosUser";
 import { usePublicarLibro } from "../hooks/usePublicarLibro";
 
+import axios from "axios";
+
 const libroContext = createContext()
 const libroControllerContext = createContext()
 
@@ -16,10 +18,44 @@ export function LibroProvider({ children }) {
     const { libros } = useLibrosUser()
     const { publicarLibro } = usePublicarLibro()
 
+    const eliminarLibro = async (COD) =>{
+        try {
+            const response = await axios.delete(`http://localhost:9000/empresa/eliminar/${COD}`)
+            console.log(response)
+
+            alert("Libro eliminado correctamente")
+            window.location.reload()
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const editarLibro =  async (data) =>{
+        try {
+            console.log(data)
+            const { titulo, ISBN, descripcion, costo, cod_tema } = data
+
+            const response = await axios.put("http://localhost:9000/empresa/editar/",{
+                COD: ISBN,
+                titulo: titulo,
+                descripcion: descripcion,
+                costo: costo,
+                archivo: "",
+                image: "",
+                COD_tema: cod_tema,
+                COD_empresa: "1",
+            })
+
+            console.log(response)
+            alert("Libro editado correctamente")
+        } catch (error) {
+            console.log(error)
+        }
+    } 
 
     return (
         <libroContext.Provider value={{ libros }}>
-            <libroControllerContext.Provider value={{ publicarLibro }}>
+            <libroControllerContext.Provider value={{ publicarLibro, eliminarLibro, editarLibro }}>
                 {children}
             </libroControllerContext.Provider>
         </libroContext.Provider>
