@@ -29,24 +29,25 @@ export function Login() {
     const { Inicio, Registros, formRender } = useChangeLogin()
     
     return (
-        <div className="flex flex-col items-center m-[3vh] h-[50vh] p-[2vh]">
-            <div>
-                <ButtonNav href="/" text="Regresar"/>
-            </div>
-            <nav className="flex my-[3vh] w-[90%] justify-center">
+        <div className="flex flex-col items-center  h-[50vh] p-[2vh]">
+        
+            <nav className="flex mb-1 w-1/2 justify-center font-serif text-xl">
                 <button 
                     onClick={Inicio}
-                    className="m-[2vh] bg-emerald-300 p-[1vh] rounded-[1vh] text-white hover:bg-transparent hover:text-emerald-300 border-solid border-2 hover:border-emerald-300"
+                    className="m-[2vh] bg-[#576A5B] p-[1vh] rounded-sm text-white hover:bg-transparent hover:text-[#576A5B] 
+                    border-solid border-2 border-transparent hover:border-[#576A5B] w-full"
                 >
                     Iniciar Sesion
                 </button>
                 <button 
                     onClick={Registros}
-                    className="m-[2vh] bg-emerald-300 p-[1vh] rounded-[1vh] text-white hover:bg-transparent hover:text-emerald-300 border-solid border-2 hover:border-emerald-300"
+                    className="m-[2vh] bg-[#576A5B] p-[1vh] rounded-sm text-white hover:bg-transparent hover:text-[#576A5B] 
+                    border-solid border-2 border-transparent hover:border-[#576A5B] w-full"
                 >
                     Registrar
                 </button>
             </nav>
+            
             {formRender}
         </div>
     )
