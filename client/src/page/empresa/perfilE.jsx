@@ -3,8 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../components/providers/userProvider";
-import { useUsuarioContext } from "../../components/providers/usuariosProvider";
-import { useEmpresaContext } from "../../components/providers/empresaProvider";
+import { useEmpresaContext } from "../../../src/components/providers/empresaProvider";
 
 
 export function PerfilE() {
@@ -19,7 +18,7 @@ export function PerfilE() {
         <section className="flex w-full h-auto justify-center p-[5vh] text-white font-serif">
         <div className="bg-[#576A5B] w-[70%] h-[80vh] flex flex-col items-center p-[2%] rounded-sm relative">
             <div className="flex justify-start absolute left-3 top-2">
-                <Link to="/usuarios">
+                <Link to="/empresa">
                     <FontAwesomeIcon
                     icon={faArrowLeft}
                     style={{ color: "#fff" }}

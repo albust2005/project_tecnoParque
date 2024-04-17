@@ -8,14 +8,24 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 
-export function Libros() { 
 
-    //const [select, setSelect] = useState(null);
+export function Libros() { 
 
     const { temas }  = useTemaContext();
     const { libros } = useLibrosContext();
 
-    console.log(libros)
+    const [ librosL, setLibrosL ] = useState(libros) 
+
+    const filterTema = (Tema) => {
+        if (Tema === "All"){
+            setLibrosL(libros)
+            return
+        }
+
+        const COD = temas.find(tema => tema.tema == Tema)
+        const filteredLibros = libros.filter(libro => libro.COD_tema === COD.COD)
+        setLibrosL(filteredLibros)
+    }
 
     return ( 
         <section className="flex flex-col w-[100%] font-serif">
@@ -24,30 +34,45 @@ export function Libros() {
                     <FontAwesomeIcon icon={faArrowLeft} style={{color: "#fff"}} size="lg"/>
                 </Link>
                 <div className="flex justify-around">
+                    <div className="bg-gray-200 p-[1vh] rounded-[2vh]">
+                        <button onClick={() => filterTema("All")}>All</button>
+                    </div>
                     {
-                        temas?.map((tema) => {
+                        temas?.map((tema, Index) => {
                             return (
-                                <div key={tema.COD} className="bg-gray-200 p-[1vh] rounded-[2vh]">
-                                    <button>{tema.tema}</button>
+                                <div key={Index} className="bg-gray-200 p-[1vh] rounded-[2vh]">
+                                    <button onClick={() => filterTema(tema.tema)}>{tema.tema}</button>
                                 </div>
                             )
                         })
                     }
                 </div>
             </nav>
-            <div className="w-[90%] container grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 ml-[20vh]">
+            <div className="w-full flex flex-col items-center mt-20 gap-6">
                 {
-                    libros?.map((libro, Index) => {
-                        return (
-                            <div key={Index} className="bg-[#576A5B] p-[2vh] w-[4   0vh] m-[2vh] text-white">
-                                <img src={libro.image} alt="" className="w-[20vh]"/>
-                                <div>
-                                <h3 className="text-3xl">{libro.titulo}</h3>
-                                <p className="text-lg">{libro.descripcion}</p>
-                                </div>
-                            </div>
-                        )
-                    })
+                    librosL?.length === 0
+                        ?
+                        <h1>Aun no haz publicado ningun libro</h1>
+                        :
+                        <section className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 max-w-[1000px]">
+                            {
+                                librosL?.map(libro => (
+                                    <div key={libro.COD} className="w-full rounded-md bg-black text-white">
+                                        <div>
+                                            <img src="../src/assets/img/libros.jpg" className="rounded-t-md max-h-96 w-full object-cover" alt="" />
+                                        </div>
+                                        <div className="p-3 flex flex-col gap-2">
+                                            <div className="min-h-40">
+                                                <h1 className="font-semibold text-wrap">{libro.titulo}</h1>
+                                                <p className="">{libro.descripcion}</p>
+                                                <p>costo: ${libro.costo}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </section>
+
                 }
             </div>
         </section>

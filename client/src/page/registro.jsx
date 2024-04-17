@@ -16,7 +16,7 @@ export function Registro() {
   const { createUser } = useNewUserContext();
 
   return (
-    <div>
+    <div className="">
       <form
         onSubmit={handleSubmit(createUser)}
         className="bg-[#576A5B] p-[3vh] rounded-sm w-[100vh] text-white"

@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react";
 import { useLibrosUser } from "../hooks/useLibrosUser";
 import { usePublicarLibro } from "../hooks/usePublicarLibro";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
@@ -17,6 +18,7 @@ export const useLibrosControllerContext = () => {
 export function LibroProvider({ children }) {
     const { libros } = useLibrosUser()
     const { publicarLibro } = usePublicarLibro()
+    const navigate = useNavigate()
 
     const eliminarLibro = async (COD) =>{
         try {
@@ -48,6 +50,7 @@ export function LibroProvider({ children }) {
 
             console.log(response)
             alert("Libro editado correctamente")
+            navigate("/empresa/libros")
         } catch (error) {
             console.log(error)
         }

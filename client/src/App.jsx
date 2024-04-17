@@ -25,17 +25,19 @@ import { ToastContainer } from 'react-toastify';
 function App() {
   return (
     <>
-      <UsuarioProvider>
-        <UserProvider>
-          <LibroProvider>
-            <TemaProvider>
-              <Header></Header>
-              <RouterPage></RouterPage>
-            </TemaProvider>
-          </LibroProvider>
-          <ToastContainer position="top-center" />
-        </UserProvider>
-      </UsuarioProvider>
+      <EmpresaProvider>
+        <UsuarioProvider>
+          <UserProvider>
+            <LibroProvider>
+              <TemaProvider>
+                <Header></Header>
+                <RouterPage></RouterPage>
+              </TemaProvider>
+            </LibroProvider>
+            <ToastContainer position="top-center" />
+          </UserProvider>
+        </UsuarioProvider>
+      </EmpresaProvider>
     </>
   );
 }

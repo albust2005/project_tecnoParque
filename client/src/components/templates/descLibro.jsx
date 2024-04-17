@@ -2,11 +2,11 @@ import { useParams } from "react-router-dom"
 import { useLibrosUser } from "../hooks/useLibrosUser";
 import { ButtonNav } from "../buttons/bNav";
 import { useUserContext } from "../providers/userProvider";
-import { useCarritoUserContext, useCarritoUserCrudContext } from "../providers/carritoProvider";
+// import { useCarritoUserContext, useCarritoUserCrudContext } from "../providers/carritoProvider";
 
 
 export function DescLibros() {
-    const { addLibroSeleccionado } = useCarritoUserCrudContext()
+    // const { addLibroSeleccionado } = useCarritoUserCrudContext()
     const { sesionUser } = useUserContext()
 
     const { COD } = useParams();
@@ -41,8 +41,8 @@ export function DescLibros() {
                     <div>
                         {
                             libro?.costo == 0 
-                            ? <a href={libro?.archivo}>Descarga El libro</a>
-                            : <button className="p-[2vh] bg-white mb-2" onClick={() => addLibroSeleccionado(libro.COD)}>Comprar</button>
+                            ? <a href={libro?.archivo} className="no-underline">Descarga El libro</a>
+                            : <button className="p-[2vh] bg-white mb-2">Comprar</button>
                         }
                     </div>
                 </div>
