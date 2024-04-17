@@ -5,7 +5,6 @@ import {
     eliminarPerfil,
     tema,
     libros,
-    getAllEmpresas,
     usuarios
 } from '../controllers/user.Controller.js';
 
