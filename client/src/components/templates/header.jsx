@@ -35,6 +35,7 @@ export function Header() {
             <ButtonNav text="Perfil" href="/usuarios/perfil"></ButtonNav>
             <ButtonNav text="Libros" href="/usuarios/libros"></ButtonNav>
             <ButtonNav text="Mis libros" href="/usuarios/misLibros"></ButtonNav> 
+            
           </div>
           <button onClick={logout}><ButtonNav href="/login" text="Cerrar Sesión"></ButtonNav></button>
         </>
