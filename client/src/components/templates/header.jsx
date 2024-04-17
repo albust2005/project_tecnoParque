@@ -30,22 +30,25 @@ export function Header() {
         </>
       )}
       {sesionUser?.Rol === "Cliente" && (
-        <> 
+        <>
           <div className="">
             <ButtonNav text="Perfil" href="/usuarios/perfil"></ButtonNav>
             <ButtonNav text="Libros" href="/usuarios/libros"></ButtonNav>
-            <ButtonNav text="Mis libros" href="/usuarios/misLibros"></ButtonNav> 
+            <ButtonNav text="Mis libros" href="/usuarios/misLibros"></ButtonNav>
           </div>
           <button onClick={logout}><ButtonNav href="/login" text="Cerrar Sesión"></ButtonNav></button>
         </>
       )}
       {sesionUser?.Rol === "Empresa" && (
-        <div className="flex flex-col md:flex-row">
-          <ButtonNav text="Perfil" href="/empresa/perfil"/>
-          <ButtonNav text="Libros" href="/empresa/libros"/>
-          <ButtonNav text="Publicar" href="empresa/publicar" />
-          <ButtonNav text="Estadistica" href="empresa/estadistica" />
-        </div>
+        <>
+          <div className="flex flex-col md:flex-row">
+            <ButtonNav text="Perfil" href="/empresa/perfil" />
+            <ButtonNav text="Libros" href="/empresa/libros" />
+            <ButtonNav text="Publicar" href="empresa/publicar" />
+            <ButtonNav text="Estadistica" href="empresa/estadistica" />
+          </div>
+          <button onClick={logout}><ButtonNav href="/login" text="Cerrar Sesión"></ButtonNav></button>
+        </>
       )}
     </nav>
   );

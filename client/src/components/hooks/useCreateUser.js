@@ -1,12 +1,6 @@
 import axios from 'axios';
 
-import { useNavigate } from 'react-router-dom';
-import { useChangeLogin } from '../../page/login';
-
 export const useCreateUser = (URI) => {
-    const { Inicios } = useChangeLogin()
-    console.log(URI)
-
     //funcion para registrar un nuevo usuario
     const createUser = async (data) => {
         try {

@@ -1,5 +1,5 @@
 import express from 'express';
-import { getuser, postuser } from '../controllers/auth.Controller.js';
+import { getuser, postuser, getempresa } from '../controllers/auth.Controller.js';
 
 // Para intregar las rutas
 const router = express.Router()
@@ -8,6 +8,7 @@ const router = express.Router()
 router.post('/login/usuario', getuser);
 // Ruta para registrar un usuario
 router.post('/registeruser', postuser);
-
+// ruta para iniciar sesion como empresa
+router.post("/login/empresa", getempresa);
 
 export default router;
