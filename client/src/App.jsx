@@ -13,6 +13,9 @@ import { IndexE } from "./page/empresa/indexE";
 import { LibroProvider } from "./components/providers/librosProvider";
 import { UsuarioProvider } from "./components/providers/usuariosProvider";
 
+import { ToastContainer } from 'react-toastify';
+
+
 function App() {
   return (
     <>
@@ -24,6 +27,7 @@ function App() {
               <RouterPage></RouterPage>
             </TemaProvider>
           </LibroProvider>
+          <ToastContainer position="top-center" />
         </UserProvider>
       </UsuarioProvider>
 
