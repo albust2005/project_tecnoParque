@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const useLoginUser = (URI) => {
     const [ sesionUser, setSesionUser ] = useState(() => {
@@ -13,13 +13,11 @@ export const useLoginUser = (URI) => {
     }, [sesionUser])
 
     const navigate = useNavigate()
-    const location = useLocation()
 
     //Iniciar Sesion - Usuario
     const loginUser = async (data) => {
         try {
             const { username, contrasena, Rol } = data
-            console.log(URI)
 
             if(Rol == "Cliente") {
                 const respuesta = await axios.post(URI, {
@@ -27,11 +25,22 @@ export const useLoginUser = (URI) => {
                     contrasena: contrasena
                 })
 
+                console.log(respuesta)
                 alert(`Bienvenido ${username}`)
                 setSesionUser(data)
                 navigate('/usuarios')
             }else{
-                console.log("Sesion de empresa")
+                if (Rol == "Empresa") {
+                    const respuesta = await axios.post("http://localhost:9000/login/empresa", {
+                        username: username,
+                        contrasena: contrasena
+                    })
+
+                    console.log(respuesta)
+                    alert(`Bienvenido ${username}`)
+                    setSesionUser(data)
+                    navigate('/empresa')
+                }
             }
         }catch (error) {
             if (error.response) {
