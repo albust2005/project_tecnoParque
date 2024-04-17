@@ -29,7 +29,7 @@ export function Login() {
     const { Inicio, Registros, formRender } = useChangeLogin()
     
     return (
-        <div className="flex flex-col items-center  h-[50vh] p-[2vh]">
+        <div className="flex flex-col items-center justify-center h-[100vh] p-[2vh]">
         
             <nav className="flex mb-1 w-1/2 justify-center font-serif text-xl">
                 <button 

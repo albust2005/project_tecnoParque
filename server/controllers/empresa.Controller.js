@@ -140,4 +140,4 @@ export const empresas = async (req, res) => {
             });
         }
     }
-
+}
