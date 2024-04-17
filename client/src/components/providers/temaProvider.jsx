@@ -8,11 +8,11 @@ export function useTemaContext() {
 }
 
 export function TemaProvider({ children }) {
-    const { tema } = useTema()
+    const { temas } = useTema()
 
     return (
-        <TemaProvider value={tema}>
+        <temaContext.Provider value={{temas}}>
             { children }
-        </TemaProvider>
+        </temaContext.Provider>
     )
 }
