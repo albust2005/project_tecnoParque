@@ -10,7 +10,7 @@ import 'slick-carousel/slick/slick-theme.css';
 export function Index() {
     return(
         <>
-            <div className="flex w-full h-[80vh] overflow-hidden z-10 justify-center items-center text-white ">
+            <div className="flex w-full h-[80vh] overflow-hidden z-10 justify-center items-center text-white font-serif">
                 <div className="flex flex-col h-[80%] w-full absolute bg-gray-500 z-10 opacity-70 text-center items-center justify-center"></div>
                 <img src="../../src/assets/img/imagenLibro.webp" alt="" className="w-full object-cover -z-10"/>
                 <h1 className="absolute z-20 text-8xl font-serif mb-[10%]">Empresa ABC</h1>
