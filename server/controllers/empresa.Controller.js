@@ -47,3 +47,29 @@ export const publicarLibro = async (req, res) => {
         }
     }
 }
+
+
+// Ruta para eliminar un libro
+export const eliminarLibro = async (req, res) => {
+    const { COD } = req.params;
+
+    try {
+        const libroEliminado = await Libros.destroy({
+            where: {
+                COD: COD
+            }
+        });
+
+        if (libroEliminado === 1) {
+            // El libro se eliminó correctamente
+            res.status(200).json({ mensaje: 'Libro eliminado correctamente.' });
+        } else {
+            // No se encontró ningún libro con el COD proporcionado
+            res.status(404).json({ error: 'No se encontró ningún libro con el COD proporcionado.' });
+        }
+    } catch (error) {
+        // Error al intentar eliminar el libro
+        console.error('Error al eliminar el libro:', error);
+        res.status(500).json({ error: 'Error al eliminar el libro. Por favor, inténtalo de nuevo más tarde.' });
+    }
+};

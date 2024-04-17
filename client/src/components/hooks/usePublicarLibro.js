@@ -19,7 +19,8 @@ export const usePublicarLibro = () => {
             })
 
             console.log(response)
-            navigate("/")
+            alert("Libro creado correctamente")
+            navigate("/empresa/libros")
 
         } catch (error) {
             console.log(error.message)
