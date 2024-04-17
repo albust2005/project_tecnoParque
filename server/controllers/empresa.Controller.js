@@ -49,6 +49,51 @@ export const publicarLibro = async (req, res) => {
 }
 
 
+//Ruta para editar libro
+export const editarLibro = async (req, res) => {
+    const {
+        COD,
+        titulo,
+        descripcion,
+        costo,
+        archivo,
+        image,
+        COD_tema,
+        COD_empresa
+    } = req.body;
+
+    try {
+        const libroExistente = await Libros.findOne({ where: { COD } });
+
+        if (libroExistente) {
+            await Libros.update(
+                {
+                    titulo,
+                    descripcion,
+                    costo,
+                    archivo,
+                    image,
+                    COD_tema,
+                    COD_empresa
+                },
+                { where: { COD } }
+            );
+            res.json({ message: "Libro editado correctamente" });
+        } else {
+            res.status(404).json({ message: "No se encontró ningún libro con el COD proporcionado" });
+        }
+    } catch (error) {
+        if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res.status(400).json({ message: "Error de base de datos", error: error.message });
+        } else {
+            // Manejar otros tipos de errores
+            res.status(400).json({ message: "Error inesperado", error });
+        }
+    }
+};
+
+
 // Ruta para eliminar un libro
 export const eliminarLibro = async (req, res) => {
     const { COD } = req.params;

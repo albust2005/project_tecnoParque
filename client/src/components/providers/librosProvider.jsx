@@ -30,10 +30,32 @@ export function LibroProvider({ children }) {
         }
     }
 
+    const editarLibro =  async (data) =>{
+        try {
+            console.log(data)
+            const { titulo, ISBN, descripcion, costo, cod_tema } = data
+
+            const response = await axios.put("http://localhost:9000/empresa/editar/",{
+                COD: ISBN,
+                titulo: titulo,
+                descripcion: descripcion,
+                costo: costo,
+                archivo: "",
+                image: "",
+                COD_tema: cod_tema,
+                COD_empresa: "1",
+            })
+
+            console.log(response)
+            alert("Libro editado correctamente")
+        } catch (error) {
+            console.log(error)
+        }
+    } 
 
     return (
         <libroContext.Provider value={{ libros }}>
-            <libroControllerContext.Provider value={{ publicarLibro, eliminarLibro }}>
+            <libroControllerContext.Provider value={{ publicarLibro, eliminarLibro, editarLibro }}>
                 {children}
             </libroControllerContext.Provider>
         </libroContext.Provider>

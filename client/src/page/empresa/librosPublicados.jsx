@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { useLibrosContext, useLibrosControllerContext } from "../../components/providers/librosProvider"
 
 export function LibrosPublicados() {
@@ -28,7 +29,11 @@ export function LibrosPublicados() {
                                             <p>costo: {libro.costo}</p>
                                         </div>
                                         <div className="flex flex-row-reverse gap-3 text-black">
-                                            <button className="bg-neutral-100 px-2 min-h-4 rounded-sm">Editar</button>
+                                            <Link
+                                                to={`/empresa/libros/editar/${libro.COD}`}
+                                                className="bg-neutral-100 px-2 min-h-4 rounded-sm">
+                                                Editar
+                                            </Link>
                                             <button onClick={() => eliminarLibro(libro.COD)} className="bg-neutral-100 px-2 min-h-4 rounded-sm">Eliminar</button>
                                         </div>
                                     </div>
