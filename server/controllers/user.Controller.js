@@ -70,7 +70,7 @@ export const libros = async (req, res) => {
   }
 };
 
-// Obtener todas las empresas
+// Obtener todas los usuarios
 export const usuarios = async (req, res) => {
   try {
     const usuarios = await Usuarios.findAll();

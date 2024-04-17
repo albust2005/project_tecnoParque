@@ -19,7 +19,7 @@ export const usePublicarLibro = () => {
             })
 
             console.log(response)
-            navigate("/")
+            navigate("/usuarios")
 
         } catch (error) {
             console.log(error.message)

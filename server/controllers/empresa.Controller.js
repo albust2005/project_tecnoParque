@@ -8,6 +8,7 @@ import {
 } from "../models/associations.js";
 import bcrypt from "bcrypt";
 import { Sequelize } from "sequelize";
+import { usuarios } from "./user.Controller.js";
 
 
 export const publicarLibro = async (req, res) => {
@@ -44,6 +45,27 @@ export const publicarLibro = async (req, res) => {
         } else {
             // Manejar otros tipos de errores
             res.status(400).json({ message: 'Error inesperado', error });
+        }
+    }
+}
+
+// obtener todas las empresas
+export const empresas = async (req, res) => {
+    try {
+        const empresas = await Empresa.findAll();
+        res.status(200).json(empresas);
+    } catch (error) {
+        if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res
+              .status(400)
+              .json({ message: `Error de base datos`, error: error.message });
+        } else {
+            // Manejar otros tipos de errores
+            res.status(400).json({
+              message: "Hubo error al traer la información de los usuarios",
+              error,
+            });
         }
     }
 }

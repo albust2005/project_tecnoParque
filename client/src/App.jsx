@@ -16,22 +16,24 @@ import { ProtectedRoute } from "./components/providers/protedtecRoute";
 import { NotFount } from "./components/templates/NotFount";
 
 import { UsuarioProvider } from "./components/providers/usuariosProvider";
+import { EmpresaProvider } from "./components/providers/empresaProvider";
 
 
 function App() {
   return (
     <>
-      <UsuarioProvider>
-        <UserProvider>
-          <LibroProvider>
-            <TemaProvider>
-              <Header></Header>
-              <RouterPage></RouterPage>
-            </TemaProvider>
-          </LibroProvider>
-        </UserProvider>
-      </UsuarioProvider>
-
+      <EmpresaProvider>
+        <UsuarioProvider>
+          <UserProvider>
+            <LibroProvider>
+              <TemaProvider>
+                <Header></Header>
+                <RouterPage></RouterPage>
+              </TemaProvider>
+            </LibroProvider>
+          </UserProvider>
+        </UsuarioProvider>
+      </EmpresaProvider>
     </>
   );
 }

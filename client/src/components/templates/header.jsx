@@ -47,7 +47,7 @@ export function Header() {
             <ButtonNav text="Perfil" href="/empresa/perfil" />
             <ButtonNav text="Libros" href="/empresa/libros" />
             <ButtonNav text="Publicar" href="empresa/publicar" />
-            <ButtonNav text="Estadistica" href="empresa/estadistica" />
+            <ButtonNav text="Estadistica" href="empresa/estadisticas" />
           </div>
           <button onClick={logout}><ButtonNav href="/login" text="Cerrar Sesión"></ButtonNav></button>
         </>
