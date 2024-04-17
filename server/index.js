@@ -9,6 +9,7 @@ import  db  from './database/db.js';
 // Importamos las rutas
 import auth from './routes/auth.routes.js';
 import user from './routes/user.routes.js';
+import empresa from './routes/empresa.routes.js'
 
 // Iniciando el servidor
 const app = express()
@@ -26,6 +27,7 @@ app.use(session({
 // Rutas de la navegación
 app.use("/", auth);
 app.use("/user", user);
+app.use("/empresa", empresa);
 
 // Comprobando la conexión con la base de datos
 try{

@@ -36,6 +36,7 @@ export function Publicar() {
                         />
                         {errors.titulo && (<span>{errors.titulo.message}</span>)}
                     </div>
+
                     <div className="flex flex-col w-[80%] mb-[2vh]">
                         <label className="font-serif text-xl">
                             ISBN
@@ -75,6 +76,23 @@ export function Publicar() {
                         {errors.descripcion && (<span>{errors.descripcion.message}</span>)}
                     </div>
 
+                       
+                    <div className="flex flex-col w-[80%] mb-[2vh]">
+                        <label className="font-serif text-xl">
+                            Costo
+                        </label>
+                        <input
+                            type="text"
+                            className="rounded-[1vh] p-[1vh]"
+                            {...register("costo", {
+                                required: {
+                                    value: true,
+                                    message: "Escribir el costo del libro",
+                                },
+                            })}
+                        />
+                        {errors.ISBN && (<span>{errors.ISBN.message}</span>)}
+                    </div>
 
                     <div className="flex flex-col w-[80%] mb-[2vh]">
                         <label className="font-serif text-xl">Rol</label>
