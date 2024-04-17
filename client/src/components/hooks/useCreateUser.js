@@ -1,8 +1,6 @@
 import axios from 'axios';
 
 export const useCreateUser = (URI) => {
-    console.log(URI)
-
     //funcion para registrar un nuevo usuario
     const createUser = async (data) => {
         try {

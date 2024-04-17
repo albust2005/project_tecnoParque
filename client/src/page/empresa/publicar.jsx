@@ -95,13 +95,13 @@ export function Publicar() {
                     </div>
 
                     <div className="flex flex-col w-[80%] mb-[2vh]">
-                        <label className="font-serif text-xl">Rol</label>
+                        <label className="font-serif text-xl">Tema</label>
                         <select
                             name="cod_tema"
                             {...register("cod_tema")}
                             className="rounded-[1vh] p-[1vh]"
                         >
-                            <option value="tema" disabled className="text-black">Rol</option>
+                            <option value="tema" disabled className="text-black">Tema</option>
                             {
                                 temas?.map(tema => (
                                     <option key={tema.COD} value={tema.COD} className="text-black">{tema.tema}</option>
