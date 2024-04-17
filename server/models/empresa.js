@@ -28,7 +28,7 @@ const Empresa = db.define('empresa', {
         allowNull: false,
         unique: true
     },
-    constrasena: {
+    contrasena: {
         type: DataTypes.STRING(200),
         allowNull: false,
         unique: true
