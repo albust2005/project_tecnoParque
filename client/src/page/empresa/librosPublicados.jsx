@@ -5,7 +5,7 @@ export function LibrosPublicados() {
 
 
     return (
-        <section className="w-full flex flex-col items-center mt-20 gap-6 font-serif">
+        <section className="w-full flex flex-col items-center mt-10 gap-6 font-serif">
             <div>
                 <h1 className="font-bold text-5xl">Tus libros</h1>
             </div>
