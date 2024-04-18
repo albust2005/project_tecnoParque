@@ -29,7 +29,7 @@ export function LibrosPublicados() {
     return (
         <section className="w-full flex flex-col items-center gap-6">
             <nav className="flex flex-col p-[2vh] bg-[#576A5B] w-full">
-                <Link to="/usuarios">
+                <Link to="/empresa">
                     <FontAwesomeIcon icon={faArrowLeft} style={{color: "#fff"}} size="lg"/>
                 </Link>
                 <div className="flex justify-around">
