@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useTemaContext } from '../../components/providers/temaProvider';
 import { useLibrosControllerContext } from '../../components/providers/librosProvider';
+import axios, { Axios } from 'axios';
 
 export function Publicar() {
     const {
@@ -10,7 +11,16 @@ export function Publicar() {
     } = useForm();
 
     const { temas } = useTemaContext()
-    const { publicarLibro } = useLibrosControllerContext()
+    const { publicarLibro, handleImage } = useLibrosControllerContext()
+
+    // const imageChange = ({image}) => {
+    //     const change = Axios.post("url", {
+    //         image: image
+    //     })
+
+    //     console.log(change)
+    //     const setFile = change;
+    // }
 
     return (
         <section className='mt-12 mb-12 w-full h-full flex flex-col items-center justify-center text-white font-serif'>
@@ -92,6 +102,19 @@ export function Publicar() {
                             })}
                         />
                         {errors.ISBN && (<span>{errors.ISBN.message}</span>)}
+                    </div>
+
+                    <div className='flex flex-col w-[80%] mb-[2vh]'>
+                        <label>Imagen</label>
+                        <input 
+                            type="text" 
+                            className='rounded-[1vh] p-[1vh] bg-transparent border-b-2 border-white focus:outline-none'
+                            {...register("image")}
+                            // onChange={(event) => {
+                            //     imageChange(event.target.files[0])
+                            // }}
+                        />
+                        {errors.image && (<span>{errors.image.message}</span>)}
                     </div>
 
                     <div className="flex flex-col w-[80%] mb-[2vh]">

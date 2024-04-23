@@ -59,7 +59,7 @@ export function LibrosU() {
                                 librosL?.map(libro => (
                                     <div key={libro.COD} className="w-full rounded-md bg-black text-white">
                                         <div>
-                                            <img src="../src/assets/img/libros.jpg" className="rounded-t-md max-h-96 w-full object-cover" alt="" />
+                                            <img src={libro.image} className="rounded-t-md max-h-[30vh] w-full object-cover object-bottom" alt="" />
                                         </div>
                                         <div className="p-[2vh] flex flex-col gap-2">
                                             <div className="min-h-[15vh]">

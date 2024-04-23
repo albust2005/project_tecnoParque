@@ -23,6 +23,8 @@ export function LibrosPublicados() {
         setLibrosL(filteredLibros)
     }
 
+    console.log(librosL)
+
 
     const { eliminarLibro } = useLibrosControllerContext()
 
@@ -58,14 +60,14 @@ export function LibrosPublicados() {
                     <section className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 max-w-[1000px]">
                         {
                             librosL?.map(libro => (
-                                <div key={libro.COD} className="w-full rounded-md bg-black text-white">
+                                <div key={libro.COD} className="w-[40vh] rounded-md bg-black text-white">
                                     <div>
-                                        <img src="../src/assets/img/libros.jpg" className="rounded-t-md max-h-96 w-full object-cover" alt="" />
+                                        <img src={libro.image} className="rounded-t-md max-h-[30vh] w-full object-cover object-bottom" alt="" />
                                     </div>
                                     <div className="p-3 flex flex-col gap-2">
                                         <div className="min-h-40">
                                             <h1 className="font-semibold text-wrap">{libro.titulo}</h1>
-                                            <p className="">{libro.descripcion}</p>
+                                            <p className="h-[19vh] overflow-hidden">{libro.descripcion}</p>
                                             <p>costo: {libro.costo}</p>
                                         </div>
                                         <div className="flex flex-row-reverse gap-3 text-black">

@@ -9,7 +9,7 @@ export const useLoginUser = (URI) => {
     const [ sesionUser, setSesionUser ] = useState(() => {
         const user = localStorage.getItem('user')
         return user ? JSON.parse(user) : null
-    })  
+    })
 
     useEffect(() => {
         localStorage.setItem('user', JSON.stringify(sesionUser))
