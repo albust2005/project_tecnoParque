@@ -1,11 +1,16 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ButtonNav } from "../buttons/bNav";
 import { useLoginUserContext, useUserContext } from "../providers/userProvider";
 import { Link, useLocation } from "react-router-dom";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { useCarritoUserContext } from "../providers/carritoProvider";
+import { Carrito } from "../../page/usuarios/carrito";
 
 export function Header() {
   const location = useLocation();
   const { sesionUser } = useUserContext();
   const { logout } = useLoginUserContext();
+  const { showCart, cart } = useCarritoUserContext()
 
   if (location?.pathname === "/login") {
     return null;
@@ -21,24 +26,36 @@ export function Header() {
   // }
 
   return (
-    <nav className="flex justify-between p-[2vh] border-solid border-2 items-center font-serif">
+    <nav className="flex justify-between h-24 border-solid items-center font-serif">
       <Link to="/">
         <h1 className="font-serif text-xl">Empresa ABC</h1>
       </Link>
       {!sesionUser && (
         <>
-          <ButtonNav href="/libros" text="Libros"></ButtonNav>
-          <ButtonNav href="/login" text="Iniciar Sesión"></ButtonNav>
+          <div>
+            <ButtonNav href="/libros" text="Libros"></ButtonNav>
+            <ButtonNav href="/login" text="Iniciar Sesión"></ButtonNav>
+          </div>
         </>
       )}
       {sesionUser?.Rol === "Cliente" && (
         <>
-          <div className="">
+          <div className="flex gap-4 items-center">
             <ButtonNav text="Perfil" href="/usuarios/perfil"></ButtonNav>
             <ButtonNav text="Libros" href="/usuarios/libros"></ButtonNav>
             <ButtonNav text="Mis libros" href="/usuarios/misLibros"></ButtonNav>
           </div>
-          <button onClick={logout}><ButtonNav href="/login" text="Cerrar Sesión"></ButtonNav></button>
+          <div className="flex gap-4">
+            <button
+              onClick={showCart}
+            >
+              <FontAwesomeIcon
+                className="hover:scale-125 transition-all"
+                icon={faCartShopping}
+              />
+            </button>
+            <button onClick={logout}><ButtonNav href="/login" text="Cerrar Sesión"></ButtonNav></button>
+          </div>
         </>
       )}
       {sesionUser?.Rol === "Empresa" && (
@@ -52,6 +69,12 @@ export function Header() {
           <button onClick={logout}><ButtonNav href="/login" text="Cerrar Sesión"></ButtonNav></button>
         </>
       )}
+
+      {
+        cart &&
+        <Carrito></Carrito>
+      }
+
     </nav>
   );
 }

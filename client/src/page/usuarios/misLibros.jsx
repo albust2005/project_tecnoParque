@@ -1,7 +1,5 @@
 import { useLibrosContext } from "../../components/providers/librosProvider"
 
-
-
 export function MisLibros() {
 
     const index = 1013105771;
