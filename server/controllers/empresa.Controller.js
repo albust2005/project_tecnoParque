@@ -9,7 +9,25 @@ import {
 import bcrypt from "bcrypt";
 import { Sequelize } from "sequelize";
 import { usuarios } from "./user.Controller.js";
+import path from "path";
+import multer from 'multer';
 
+
+// const storage = multer.diskStorage({
+//     destination: path.join('../docs'),
+//     filename: (req, file, cd) => {
+//         cd(null, `${Date.now()}-${file.originalname}`)
+//     }
+// })
+
+// export const upload = (multer({storage:storage})).single('archivo')
+
+// export const archivo = (req, res) => {
+//     console.log(req)
+//     const archivo = req.file
+//     res.json(archivo)
+//     console.log(archivo)
+// }
 
 export const publicarLibro = async (req, res) => {
     const {
@@ -17,14 +35,20 @@ export const publicarLibro = async (req, res) => {
         titulo,
         descripcion,
         costo,
-        archivo,
         image,
         COD_tema,
         COD_empresa
-    } = req.body
+    } = req.body    
+
+    let archivo = "";
+
+    if (req.file) {
+        archivo = req.file.filename;
+        console.log(archivo)
+    }
 
     try {
-        await Libros.create({
+        await Libros.create(
             COD,
             titulo,
             descripcion,
@@ -33,7 +57,7 @@ export const publicarLibro = async (req, res) => {
             image,
             COD_tema,
             COD_empresa
-        })
+        )
         res.json({ message: "Libro publicado correctamente" })
     } catch (error) {
         if (error instanceof Sequelize.UniqueConstraintError) {
@@ -41,10 +65,10 @@ export const publicarLibro = async (req, res) => {
             res.status(400).json({ message: `Los datos ingresados ya existen en el sistema`, error: error.errors })
         } else if (error instanceof Sequelize.DatabaseError) {
             // Manejar el error de base de datos
-            res.status(400).json({ message: `Error de base datos`, error: error.message })
+            res.status(401).json({ message: `Error de base datos`, error: error.message })
         } else {
             // Manejar otros tipos de errores
-            res.status(400).json({ message: 'Error inesperado', error });
+            res.status(402).json({ message: 'Error inesperado', error: error.message });
         }
     }
 }

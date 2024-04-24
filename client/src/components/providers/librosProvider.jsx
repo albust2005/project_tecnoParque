@@ -18,7 +18,7 @@ export const useLibrosControllerContext = () => {
 
 export function LibroProvider({ children }) {
     const { libros } = useLibrosUser()
-    const { publicarLibro, handleImage } = usePublicarLibro()
+    const { publicarLibro } = usePublicarLibro()
     const navigate = useNavigate()
 
     const eliminarLibro = async (COD) =>{
@@ -59,7 +59,7 @@ export function LibroProvider({ children }) {
 
     return (
         <libroContext.Provider value={{ libros }}>
-            <libroControllerContext.Provider value={{ publicarLibro, eliminarLibro, editarLibro, handleImage }}>
+            <libroControllerContext.Provider value={{ publicarLibro, eliminarLibro, editarLibro }}>
                 {children}
             </libroControllerContext.Provider>
         </libroContext.Provider>

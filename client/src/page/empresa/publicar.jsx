@@ -11,16 +11,7 @@ export function Publicar() {
     } = useForm();
 
     const { temas } = useTemaContext()
-    const { publicarLibro, handleImage } = useLibrosControllerContext()
-
-    // const imageChange = ({image}) => {
-    //     const change = Axios.post("url", {
-    //         image: image
-    //     })
-
-    //     console.log(change)
-    //     const setFile = change;
-    // }
+    const { publicarLibro } = useLibrosControllerContext()
 
     return (
         <section className='mt-12 mb-12 w-full h-full flex flex-col items-center justify-center text-white font-serif'>
@@ -110,11 +101,18 @@ export function Publicar() {
                             type="text" 
                             className='rounded-[1vh] p-[1vh] bg-transparent border-b-2 border-white focus:outline-none'
                             {...register("image")}
-                            // onChange={(event) => {
-                            //     imageChange(event.target.files[0])
-                            // }}
                         />
                         {errors.image && (<span>{errors.image.message}</span>)}
+                    </div>
+
+                    <div className='flex flex-col w-[80%] mb-[2vh]'>
+                        <label>Archivo</label>
+                        <input 
+                            type="file" 
+                            className='rounded-[1vh] p-[1vh] bg-transparent border-b-2 border-white focus:outline-none'
+                            {...register("archivo")}
+                        />
+                        {errors.image && (<span>{errors.archivo.message}</span>)}
                     </div>
 
                     <div className="flex flex-col w-[80%] mb-[2vh]">

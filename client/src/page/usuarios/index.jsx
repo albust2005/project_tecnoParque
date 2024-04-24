@@ -15,7 +15,7 @@ export function IndexU() {
                 <Route path="/libros" element={<LibrosU/>}></Route>
                 <Route path="/misLibros" element={<MisLibros/>}></Route>
                 <Route path="/libros/descLibros/:COD" element={<DescLibros/>}></Route>
-                {/* <Route path="/carrito" element={<Carrito/>}></Route> */}
+                <Route path="/carrito" element={<Carrito/>}></Route>
             </Routes>
         </>
     )
