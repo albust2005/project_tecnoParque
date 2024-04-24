@@ -4,6 +4,7 @@ import { ButtonNav } from "../buttons/bNav";
 import { useUserContext } from "../providers/userProvider";
 // import { useCarritoUserContext, useCarritoUserCrudContext } from "../providers/carritoProvider";
 
+import { useState } from 'react'
 
 export function DescLibros() {
     // const { addLibroSeleccionado } = useCarritoUserCrudContext()
@@ -11,9 +12,25 @@ export function DescLibros() {
 
     const { COD } = useParams();
     console.log(COD)
-    const { libros } =  useLibrosUser();
+    const { libros } = useLibrosUser();
     const libro = libros.find((libro) => libro.COD == COD)
-    console.log(libro)
+
+    const [archivoURL, setArchivoURL] = useState(null)
+
+    const addArchivo = (archivo) => {
+        if (archivo) {
+            const url = URL.createObjectURL(archivo); 
+            setArchivoURL(url);
+            return url; 
+        }
+        return null;
+    }
+
+    const handleClick = () => {
+        const rutaArchivo = "../../../../docs/1713927107411-ESTRUCTURA DOCUMENTAL PROYECTO (1).pdf";
+        const archivo = new File([rutaArchivo], 'nombre_del_archivo.pdf'); 
+        addArchivo(archivo);
+    };
 
     return (
         <section className="flex flex-col items-center font-serif m-[2vh]">
@@ -39,16 +56,19 @@ export function DescLibros() {
                         </h3>
                     </div>
                     <div>
-                        {
-                            libro?.costo == 0 
-                            ? <a href={libro?.archivo} download className="no-underline">Descarga El libro</a>
-                            : <button className="p-[2vh] bg-white mb-2">Comprar</button>
-                        }
+                        {/* {
+                            libro?.costo == 0
+                                ? <button onClick={() => archivo("../../../../docs/1713927107411-ESTRUCTURA DOCUMENTAL PROYECTO (1).pdf")}><a href={archivoURL} download className="no-underline">Descarga El libro</a></button>
+                                : <button onClick={() => archivo(libro.archivo)}><a href={archivoURL} download className="no-underline">Descarga El libro</a></button>
+                        } */}
+
+                        <button onClick={handleClick}>Descargar El libro</button>
+                        {archivoURL && <a href={archivoURL} download className="no-underline">Descargar El libro</a>}
                     </div>
                 </div>
                 <div className="flex flex-col items-center justify-center w-[50%] h-[40vh]">
                     <div>
-                        <img src={libro?.image} alt="" className="w-[30vh] h-[35vh] object-cover"/>
+                        <img src={libro?.image} alt="" className="w-[30vh] h-[35vh] object-cover" />
                     </div>
                 </div>
             </div>
