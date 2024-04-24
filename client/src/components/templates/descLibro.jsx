@@ -41,7 +41,7 @@ export function DescLibros() {
                     <div>
                         {
                             libro?.costo == 0 
-                            ? <a href={libro?.archivo} download className="no-underline">Descarga El libro</a>
+                            ? <a download={`../../../../docs/${libro?.archivo}`} className="no-underline">Descarga El libro</a>
                             : <button className="p-[2vh] bg-white mb-2">Comprar</button>
                         }
                     </div>
