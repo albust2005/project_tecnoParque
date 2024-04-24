@@ -4,9 +4,9 @@ import { faInstagram, faFacebook, faTwitter } from "@fortawesome/free-brands-svg
 
 export const Footer = () => {
     return (
-        <div className="flex flex-col text-center font-serif">
-            <h1 className="font-semibold text-lg">CONTACTANOS</h1>
-            <div className="flex justify-center gap-11 py-[3vh] px-[15%]">
+        <div className="flex w-full text-center items-center justify-center gap-6 font-serif p-6">
+            <h1 className="font-semibold text-lg w-full">Contactanos</h1>
+            <div className="flex justify-center gap-11 w-full">
                 <FontAwesomeIcon 
                     icon={faInstagram}
                     size="lg"
@@ -20,8 +20,8 @@ export const Footer = () => {
                     size="lg"
                 />
             </div>
-            <div className="flex justify-center ">
-                <h3>@Copyrigth</h3>
+            <div className="flex justify-center  w-full">
+                <small>@Copyrigth</small>
             </div>
         </div>
     )
