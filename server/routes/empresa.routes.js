@@ -1,11 +1,11 @@
 import express from "express";
-import { publicarLibro, eliminarLibro, editarLibro, empresas } from "../controllers/empresa.Controller.js";
+import { publicarLibro, eliminarLibro, editarLibro, empresas, upload } from "../controllers/empresa.Controller.js";
 
 
 const router = express.Router()
 
 //publicar libro
-router.post("/publicar", publicarLibro)
+router.post("/publicar", upload, publicarLibro)
 //eliminar libro
 router.delete("/eliminar/:COD", eliminarLibro)
 //editar libro

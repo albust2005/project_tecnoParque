@@ -13,21 +13,21 @@ import path from "path";
 import multer from 'multer';
 
 
-// const storage = multer.diskStorage({
-//     destination: path.join('../docs'),
-//     filename: (req, file, cd) => {
-//         cd(null, `${Date.now()}-${file.originalname}`)
-//     }
-// })
+const storage = multer.diskStorage({
+    destination: path.join('../docs'),
+    filename: (req, file, cd) => {
+        cd(null, `${Date.now()}-${file.originalname}`)
+    }
+})
 
-// export const upload = (multer({storage:storage})).single('archivo')
+export const upload = (multer({storage:storage})).single('archivo')
 
-// export const archivo = (req, res) => {
-//     console.log(req)
-//     const archivo = req.file
-//     res.json(archivo)
-//     console.log(archivo)
-// }
+export const archivo = (req, res) => {
+    console.log(req)
+    const archivo = req.file
+    res.json(archivo)
+    console.log(archivo)
+}
 
 export const publicarLibro = async (req, res) => {
     const {
@@ -38,7 +38,7 @@ export const publicarLibro = async (req, res) => {
         image,
         COD_tema,
         COD_empresa
-    } = req.body    
+    } = req.body
 
     let archivo = "";
 
@@ -48,7 +48,7 @@ export const publicarLibro = async (req, res) => {
     }
 
     try {
-        await Libros.create(
+        await Libros.create({
             COD,
             titulo,
             descripcion,
@@ -57,7 +57,7 @@ export const publicarLibro = async (req, res) => {
             image,
             COD_tema,
             COD_empresa
-        )
+        })
         res.json({ message: "Libro publicado correctamente" })
     } catch (error) {
         if (error instanceof Sequelize.UniqueConstraintError) {

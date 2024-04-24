@@ -39,7 +39,7 @@ export const usePublicarLibro = () => {
             const response = await axios.post('http://localhost:9000/empresa/publicar', formData)
             console.log(response)
 
-            alert("Libro creado correctamente")
+            showToastMessage("Libro creado exitosamente")
             navigate("/empresa/libros")
 
         } catch (error) {
