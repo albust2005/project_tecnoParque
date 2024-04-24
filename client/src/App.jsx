@@ -20,7 +20,7 @@ import { EmpresaProvider } from "./components/providers/empresaProvider";
 
 
 import { ToastContainer } from 'react-toastify';
-
+import { CarritoUseProvider } from "./components/providers/carritoProvider";
 
 function App() {
   return (
@@ -30,8 +30,10 @@ function App() {
           <UserProvider>
             <LibroProvider>
               <TemaProvider>
-                <Header></Header>
-                <RouterPage></RouterPage>
+                <CarritoUseProvider>
+                  <Header></Header>
+                  <RouterPage></RouterPage>                 
+                </CarritoUseProvider>
               </TemaProvider>
             </LibroProvider>
             <ToastContainer position="top-center" />
