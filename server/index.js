@@ -2,6 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
+import { PORT } from './config.js';
 
 // Importamos la base de datos
 import  db  from './database/db.js';
@@ -10,6 +11,7 @@ import  db  from './database/db.js';
 import auth from './routes/auth.routes.js';
 import user from './routes/user.routes.js';
 import empresa from './routes/empresa.routes.js'
+import payment from './routes/payment.routes.js'
 
 // Iniciando el servidor
 const app = express()
@@ -28,6 +30,7 @@ app.use(session({
 app.use("/", auth);
 app.use("/user", user);
 app.use("/empresa", empresa);
+app.use("/payment", payment);
 
 // Comprobando la conexión con la base de datos
 try{
@@ -38,7 +41,7 @@ try{
 }
 
 // Creación del servidor 
-app.listen(9000, () => {
-    console.log("Servidor ejecutandose en http://localhost:9000/")
+app.listen(PORT, () => {
+    console.log(`Servidor ejecutandose en http://localhost:${PORT}/`)
 })
 

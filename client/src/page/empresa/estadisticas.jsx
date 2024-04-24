@@ -20,17 +20,17 @@ export function Estadisticas() {
                         <section className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 max-w-1000">
                             {
                                 libros?.map(libro => (
-                                    <div key={libro.COD} className="w-full rounded-md bg-[#576A5B] text-white">
+                                    <div key={libro?.COD} className="w-full rounded-md bg-[#576A5B] text-white">
                                         <div>
-                                            <img src="../src/assets/img/libros.jpg" className="rounded-t-md max-h-96 w-full object-fill" alt="" />
+                                            <img src={libro?.image} className="rounded-t-md max-h-96 w-full object-fill" alt="" />
                                         </div>
                                         <div className="p-3 flex flex-col gap-2 ">
                                             <div>
-                                                <h1 className="font-semibold text-wrap text-xl">{libro.titulo}</h1>
+                                                <h1 className="font-semibold text-wrap text-xl">{libro?.titulo}</h1>
                                                 <h1 className="font-semibold text-wrap text-xl">Descargas:</h1>
                                                 <p className="text-lg">0</p>
                                                 <p className="font-semibold text-xl">Costo</p>
-                                                <p>{libro.costo}</p>
+                                                <p>{libro?.costo}</p>
                                             </div>
                                             {/* <div className="flex flex-row-reverse gap-3 text-[#576A5B] w-full">
                                                 <button className="bg-white px-2 min-h-4 rounded-sm border-2 border-transparent

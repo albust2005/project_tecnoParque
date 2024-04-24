@@ -2,7 +2,9 @@ import { useLibrosContext } from "../../components/providers/librosProvider"
 
 export function MisLibros() {
 
-    const librosE = [ "21345157", "24518786", "65958575" ]
+    const index = 1013105771;
+
+    const librosE = [ "1012", "12453415" ]
 
     const { libros } = useLibrosContext();
 

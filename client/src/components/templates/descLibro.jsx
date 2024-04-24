@@ -56,7 +56,7 @@ export function DescLibros() {
                         </h3>
                     </div>
                     <div>
-                        {/* {
+                      {/* {
                             libro?.costo == 0
                                 ? <button onClick={() => archivo("../../../../docs/1713927107411-ESTRUCTURA DOCUMENTAL PROYECTO (1).pdf")}><a href={archivoURL} download className="no-underline">Descarga El libro</a></button>
                                 : <button onClick={() => archivo(libro.archivo)}><a href={archivoURL} download className="no-underline">Descarga El libro</a></button>
@@ -64,6 +64,8 @@ export function DescLibros() {
 
                         <button onClick={handleClick}>Descargar El libro</button>
                         {archivoURL && <a href={archivoURL} download className="no-underline">Descargar El libro</a>}
+
+
                     </div>
                 </div>
                 <div className="flex flex-col items-center justify-center w-[50%] h-[40vh]">
