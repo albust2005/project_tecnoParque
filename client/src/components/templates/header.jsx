@@ -26,7 +26,7 @@ export function Header() {
   // }
 
   return (
-    <nav className="flex justify-between h-24 border-solid items-center font-serif">
+    <nav className="flex justify-between h-24 border-solid items-center font-serif mx-[2vh]">
       <Link to="/">
         <h1 className="font-serif text-xl">Empresa ABC</h1>
       </Link>

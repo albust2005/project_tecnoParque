@@ -1,13 +1,19 @@
 import { createContext, useContext, useState } from "react";
 import { useToastify } from "../hooks/useToastify";
+import { useComprarLibros } from "../hooks/useComprarLibro.js";
+
+import axios from 'axios';
+
 
 const carritoUserContext = createContext()
 export const useCarritoUserContext = () => useContext(carritoUserContext)
 
 export function CarritoUseProvider({ children }) {
+    const [pay, setPay] = useState(0)
     const [cart, setCart] = useState(false)
     const [libros, setLibros] = useState([])
     const { showToastMessage } = useToastify()
+    const { comprarLibro } = useComprarLibros()
 
     const showCart = () => {
         setCart(!cart)
@@ -21,7 +27,13 @@ export function CarritoUseProvider({ children }) {
             showToastMessage('este libro ya ha sido añadido')
 
             return
+        } else {
+            const newTotal = pay + Number(libro.costo);
+            setPay(newTotal)
+            console.log(pay)
         }
+
+        console.log(pay)
 
         setLibros(prevLibro =>
             [
@@ -36,6 +48,8 @@ export function CarritoUseProvider({ children }) {
     const removeToCart = libro => {
         const { COD } = libro
         setLibros(libros.filter(item => item.COD !== COD))
+        const newTotal = pay - Number(libro.costo)
+        setPay(newTotal)
     }
 
     return (
@@ -44,7 +58,9 @@ export function CarritoUseProvider({ children }) {
             cart,
             showCart,
             addToCart, 
-            removeToCart
+            removeToCart,
+            comprarLibro,
+            pay
         }}>
             {children}
         </carritoUserContext.Provider>

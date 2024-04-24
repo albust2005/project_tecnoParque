@@ -82,13 +82,18 @@ export function LibrosU() {
                                         </div>
                                         <div className="w-full flex justify-between items-center px-5 pb-5">
                                             <ButtonNav text="Ver mas" href={`/usuarios/libros/descLibros/${libro.COD}`}></ButtonNav>
-                                            <button
-                                                onClick={() => addToCart(libro)}
-                                                className="hover:scale-125 transition-all">
-                                                <FontAwesomeIcon
-                                                    icon={faCartPlus}
-                                                ></FontAwesomeIcon>
-                                            </button>
+                                            {
+                                                libro.costo == 0 
+                                                ? <></>
+                                                :
+                                                <button
+                                                    onClick={() => addToCart(libro)}
+                                                    className="hover:scale-125 transition-all">
+                                                    <FontAwesomeIcon
+                                                        icon={faCartPlus}
+                                                    ></FontAwesomeIcon>
+                                                </button>
+                                            }
                                         </div>
                                     </div>
                                 ))
